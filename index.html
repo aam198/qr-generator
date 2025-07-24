@@ -6,20 +6,17 @@
   <title>QR Code Generator</title>
   <script src="js/script.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Poppins', 'sans-serif']
-          }
-        }
-      }
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode/1.5.1/qrcode.js" referrerpolicy="no-referrer"></script>
+  <style type="text/tailwindcss">      
+    @theme { 
+      --font-display: "Poppins", "sans-serif";
     }
-  </script>
+  </style>
+ 
 </head>
 <body>
   <h1 class="text-3xl font-bold underline text-clifford">Hello</h1>
+  
 
 </body>
 </html>
