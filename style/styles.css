@@ -10,3 +10,8 @@ select{
     padding-right: 2rem !important;
 }
 
+/* Hide temporarily */
+#spinner{
+  display:none;
+}
+
