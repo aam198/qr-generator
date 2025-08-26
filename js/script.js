@@ -3,7 +3,11 @@ const qr = document.getElementById('qrcode');
 
 const onGenerateSubmit = (e) => {
   e.preventDefault();
-  console.log(123);
+
+  // Get Form inputs
+  const url = document.getElementById('url').value;
+  const size = document.getElementById('size').value;
+  console.log(url, size);
 }
 
 // Event Listener - Form Submit
