@@ -15,6 +15,10 @@ const onGenerateSubmit = (e) => {
   }
   else {
     showSpinner();
+    //TODO:  temporarily adding timeout in hiding spinner after 1 sec until generate qr is complete
+    setTimeout(() => {
+      hideSpinner()
+    }, 1000);
   }
 };
 
