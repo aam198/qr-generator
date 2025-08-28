@@ -7,8 +7,27 @@ const onGenerateSubmit = (e) => {
   // Get Form inputs
   const url = document.getElementById('url').value;
   const size = document.getElementById('size').value;
-  console.log(url, size);
+
+  // Validation
+  if(url === '') {
+    // TODO: Add custom alert
+    alert('Please enter a URL');
+  }
+  else {
+    showSpinner();
+  }
+};
+
+// Spinner 
+const showSpinner = () => {
+  document.getElementById('spinner').style.display = 'block';
 }
+
+const hideSpinner = () => {
+  document.getElementById('spinner').style.display='none';
+}
+
+hideSpinner();
 
 // Event Listener - Form Submit
 form.addEventListener('submit', onGenerateSubmit);
