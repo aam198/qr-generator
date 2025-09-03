@@ -1,5 +1,5 @@
 const form = document.getElementById('generate-form');
-const qr = document.getElementById('qrcode');
+const qrcode = document.getElementById('qrcode');
 
 const onGenerateSubmit = (e) => {
   e.preventDefault();
@@ -18,9 +18,21 @@ const onGenerateSubmit = (e) => {
     //TODO:  temporarily adding timeout in hiding spinner after 1 sec until generate qr is complete
     setTimeout(() => {
       hideSpinner()
+      // Run function and passes arguments from form
+      generateQRCode(url, size);
     }, 1000);
   }
 };
+
+// Generate QR Code, taking in url and size from form
+const generateQRCode = (url, size) => {
+  // Creating an object
+  const qrcode = new QRCode('qrcode', {
+    text: url,
+    width: size,
+    height: size,
+  })
+}
 
 // Spinner 
 const showSpinner = () => {
