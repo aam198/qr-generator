@@ -26,7 +26,7 @@ const onGenerateSubmit = (e) => {
 
 // Generate QR Code, taking in url and size from form
 const generateQRCode = (url, size) => {
-  const qrcode = new QRCode("qrcode", {
+  new QRCode("qrcode", {
     text: url,
     width: size,
     height: size,
