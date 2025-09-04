@@ -3,6 +3,8 @@ const qr = document.getElementById('qrcode');
 
 const onGenerateSubmit = (e) => {
   e.preventDefault();
+  // Clear UI if a QR code is already there
+  clearUI();
 
   // Get Form inputs
   const url = document.getElementById('url').value;
@@ -15,18 +17,25 @@ const onGenerateSubmit = (e) => {
   }
   else {
     showSpinner();
-    //TODO:  temporarily adding timeout in hiding spinner after 1 sec until generate qr is complete
+
     setTimeout(() => {
       hideSpinner()
       // Run function and passes arguments from form
       generateQRCode(url, size);
+      // Additional setTimeout since img is not available right away
+      setTimeout(()=> {
+        // Grabs the img.src from the image/qrcode on the page
+        const saveUrl = qr.querySelector('img').src;
+        createSaveBtn(saveUrl);
+      }, 50)
     }, 1000);
   }
 };
 
 // Generate QR Code, taking in url and size from form
 const generateQRCode = (url, size) => {
-  new QRCode("qrcode", {
+  // need qrcode for save button below
+  const qrcode = new QRCode("qrcode", {
     text: url,
     width: size,
     height: size,
@@ -40,6 +49,22 @@ const showSpinner = () => {
 
 const hideSpinner = () => {
   document.getElementById('spinner').style.display='none';
+}
+
+// Clear the QR if submitting again
+const clearUI = () => {
+  qr.innerHTML= '';
+}
+
+// Save button and download 
+const createSaveBtn = (saveUrl) => {
+  const link = document.createElement('a');
+  link.id = 'save-link';
+  link.classList = 'bg-red-500 hover:bg-red-700 text-white font-bold py-2 rounded w-1/3 m-auto my-5';
+  link.href=saveUrl;
+  link.download = 'qrcode';
+  link.innHTML = 'Save Image';
+  document.getElementById('generated').appendChild(link);
 }
 
 hideSpinner();
