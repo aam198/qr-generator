@@ -60,6 +60,33 @@
             <option value="600">600x600</option>
             <option value="700">700x700</option>
           </select>
+          <div>
+            <label for="color-dark">Select Dark color</label>
+            <input
+              id="color-dark"
+              name="color-dark"
+              type="color"
+              class="w-1/5 border-2 border-gray-100 mr-2 focus:outline-none mb-5 mt-2"
+              value="#1f1f1f"
+            />
+          </div>
+          <div>
+            <label for="color-light">Select Light color</label>
+            <input
+              id="color-light"
+              name="color-light"
+              type="color"
+              class="w-1/5 border-2 border-gray-100 mr-2 focus:outline-none mb-5"
+              value="#e0e0e0"
+            />
+          </div>
+
+          <input
+            id="filename"
+            placeholder="Optional. Default filename is qrcode"
+            type="text"
+            class="w-full border-2 border-gray-200 rounded p-3 text-gray-dark mr-2 focus:outline-none mb-5"
+          />
           <button class="bg-gray-600 rounded w-full text-white py-3 px-4 mt-5 hover:bg-black" type="submit">Generate QR Code</button>
         </form>
       </div>
