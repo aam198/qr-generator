@@ -9,6 +9,9 @@ const onGenerateSubmit = (e) => {
   // Get Form inputs
   const url = document.getElementById('url').value;
   const size = document.getElementById('size').value;
+  const colorDark = document.getElementById('color-dark').value;
+  const colorLight = document.getElementById('color-light').value;
+
 
   // Validation
   if(url === '') {
@@ -21,7 +24,7 @@ const onGenerateSubmit = (e) => {
     setTimeout(() => {
       hideSpinner()
       // Run function and passes arguments from form
-      generateQRCode(url, size);
+      generateQRCode(url, size,colorDark, colorLight);
       // Additional setTimeout since img is not available right away
       setTimeout(()=> {
         // Grabs the img.src from the image/qrcode on the page
@@ -33,12 +36,14 @@ const onGenerateSubmit = (e) => {
 };
 
 // Generate QR Code, taking in url and size from form
-const generateQRCode = (url, size) => {
+const generateQRCode = (url, size, colorDark, colorLight) => {
   // need qrcode for save button below
   const qrcode = new QRCode("qrcode", {
     text: url,
     width: size,
     height: size,
+    colorDark: colorDark,
+    colorLight: colorLight,
   });
 };
 
