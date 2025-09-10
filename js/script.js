@@ -11,6 +11,7 @@ const onGenerateSubmit = (e) => {
   const size = document.getElementById('size').value;
   const colorDark = document.getElementById('color-dark').value;
   const colorLight = document.getElementById('color-light').value;
+  const fileName = document.getElementById('filename').value;
 
 
   // Validation
@@ -29,7 +30,7 @@ const onGenerateSubmit = (e) => {
       setTimeout(()=> {
         // Grabs the img.src from the image/qrcode on the page
         const saveUrl = qr.querySelector('img').src;
-        createSaveBtn(saveUrl);
+        createSaveBtn(saveUrl, fileName);
       }, 50)
     }, 1000);
   }
@@ -66,12 +67,17 @@ const clearUI = () => {
 }
 
 // Save button and download 
-const createSaveBtn = (saveUrl) => {
+const createSaveBtn = (saveUrl, fileName) => {
+  // filename validation before Save 
+  if (fileName === ''){
+    fileName = 'qrcode';
+  }
+
   const link = document.createElement('a');
   link.id = 'save-link';
   link.classList = 'bg-red-500 hover:bg-red-700 text-white font-bold py-2 rounded w-1/3 m-auto my-5';
   link.href=saveUrl;
-  link.download = 'qrcode';
+  link.download = fileName;
   link.innerHTML = 'Save Image';
   document.getElementById('generated').appendChild(link);
 }
